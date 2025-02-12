@@ -1,0 +1,17 @@
+#sv100_companion_sv_scroll_to_top {
+	height:0;
+	width:0;
+	position: fixed;
+	bottom: 5%;
+	cursor: pointer;
+	z-index: 10000000;
+	transition: background-color .25s ease, width 1s ease, height 1s ease, padding 1s ease;
+}
+#sv100_companion_sv_scroll_to_top > i {
+	height: 100%;
+	width: 100%;
+	display: block;
+	-webkit-mask-repeat: no-repeat;
+	-webkit-mask-position: center;
+	transition: background-color .25s ease, -webkit-mask-size .25s ease;
+}
