@@ -14,10 +14,11 @@ foreach ( $instances as $instance ) {
 $current_settings_json = json_encode( $current_settings, JSON_PRETTY_PRINT );
 
 // Nonce and AJAX setup for import
-$import_ajax = wp_json_encode(
-	array(
+$import_args = wp_json_encode(
+    (object) array(
 		'action' => $module->get_prefix( 'import' ),
-		'nonce'  => wp_create_nonce( $module->get_prefix( 'import' ) )
+		'nonce'  => wp_create_nonce( $module->get_prefix( 'import' ) ),
+		'payload'  => (object) []
 	)
 );
 
@@ -27,7 +28,7 @@ $import_modal = wp_json_encode(
 		'title' => __( 'Import settings', 'sv100_companion' ),
 		'desc'  => __( 'All your settings will be removed and replaced with the new settings.', 'sv100_companion' ) . '<br>' .
 		           __( 'Do you want to proceed?', 'sv100_companion' ),
-		'type'  => 'confirm'
+		'type'  => 'confirm',
 	)
 );
 
@@ -54,16 +55,20 @@ $reset_modal = wp_json_encode(
 	<!-- Import Settings Section -->
 	<div class="sv_setting <?php echo $module->get_prefix( 'import' ); ?>">
 		<h4><?php _e( 'Import Settings', 'sv100_companion' ); ?></h4>
-		<textarea
-			class="sv_setting"
-			id="<?php echo $module->get_prefix( 'import_data' ); ?>"
-			name="<?php echo $module->get_prefix( 'all' ); ?>"
-			style="min-height: 400px; width: 100%;"
-		><?php echo esc_textarea( $current_settings_json ); ?></textarea>
+        <form id="<?php echo $module->get_prefix( 'import' ); ?>_data">
+            <textarea
+                    class="sv_setting"
+                    id="<?php echo $module->get_prefix( 'import_data' ); ?>"
+                    name="<?php echo $module->get_prefix( 'all' ); ?>"
+                    style="min-height: 400px; width: 100%;"
+            ><?php echo esc_textarea( $current_settings_json ); ?></textarea>
+        </form>
+
 		<button
 			class="button"
 			data-sv_admin_modal='[<?php echo $import_modal; ?>]'
-			data-sv_admin_ajax='[<?php echo $import_ajax; ?>]'
+			data-sv_admin_args='[<?php echo $import_args; ?>]'
+            data-sv_admin_data_form_id='<?php echo $module->get_prefix( 'import' ); ?>_data'
 		>
 			<?php _e( 'Import settings', 'sv100_companion' ); ?>
 		</button>
