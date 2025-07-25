@@ -38,7 +38,7 @@ class sv_scroll_to_top extends modules {
 		return $this;
 	}
 
-	protected function load_settings(): sv_scroll_to_top {
+	public function load_settings(): sv_scroll_to_top {
 		$this->get_setting('activate')
 		     ->set_title(__('Activate Scroll To Top Button', 'sv100_companion'))
 		     ->set_is_responsive(true)

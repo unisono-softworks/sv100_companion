@@ -13,7 +13,7 @@
 			add_filter( 'get_post_metadata', array( $this,'get_post_metadata' ), 10, 4 );
 		}
 	
-		protected function load_settings(): sv_featured_image {
+		public function load_settings(): sv_featured_image {
 			$this->get_setting( 'fallback_image' )
 				 ->set_title( __( 'Default thumbnail', 'sv100_companion' ) )
 				 ->set_description( __( 'Image will be used when posts or pages has no thumbnail set.', 'sv100_companion' ) )
