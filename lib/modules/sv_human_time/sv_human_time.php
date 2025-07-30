@@ -19,7 +19,7 @@
 			add_filter( 'get_the_date', array( $this, 'get_the_date' ), 10, 3 );
 		}
 	
-		protected function load_settings(): sv_human_time {
+		public function load_settings(): sv_human_time {
 			$this->get_setting( 'posts')
 				->set_title( __( 'Enables relative date format for all posts', 'sv100_companion' ) )
 				->load_type( 'checkbox' );
