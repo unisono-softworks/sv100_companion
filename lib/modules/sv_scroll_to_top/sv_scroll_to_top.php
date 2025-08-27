@@ -23,7 +23,7 @@ class sv_scroll_to_top extends modules {
 	protected function register_scripts(): sv_scroll_to_top {
 		// Register Styles
 		$this->get_script('common')
-		     ->set_path('lib/css/common_line.css')
+		     ->set_path('lib/css/common_inline.css')
 		     ->set_inline();
 
 		// Register Scripts
