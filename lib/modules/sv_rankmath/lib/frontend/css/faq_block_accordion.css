@@ -1,6 +1,3 @@
-#rank-math-faq{
-	user-select: none;
-}
 #rank-math-faq .rank-math-answer {
 	max-height:0;
 	transform: scaleY(0);
